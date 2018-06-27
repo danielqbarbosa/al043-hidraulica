@@ -1,0 +1,411 @@
+---
+title: "AL043 Hidráulica e Irrigação<br><br><h2>Capítulo 9 - Condutos Livres</h2>"  
+author: "Apresentação: <br>Daniel de Queiroz Barbosa<br> Marcos Vinicius Strieder<br> Paulo Matheus Wolbert<br><br><br>" 
+date: "19 de outubro de 2017"  
+output:
+  slidy_presentation: 
+    css: estilo.css 
+    self_contained: false 
+    mathjax: local 
+  beamer_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+----  
+
+<h2>R-Markdown: Slidy Html</h2>
+
+<h2>Dicas: Modos de exibição</h2>
+
+Os seguintes caracteres simples habilitam modos de exibição alternativos:
+
+'C' exibir índice  
+'F' Alterna a exibição do rodapé  
+'A' Alterna a exibição do slide corrente vs todos os slides (útil para impressão de páginas)  
+'S' diminuir fontes  
+'B' aumentar fontes  
+
+
+## 9. Condutos livres
+
+Denominam-se condutos livres ou canais, os condutos onde o escoamento é caracterizado por apresentar uma superfície livre na qual reina a pressão atmosférica. 
+
+**Exemplos:**  
+
+- Cursos d’água naturais (melhor exemplo de condutos livres);
+- canais artificiais de irrigação e drenagem;
+- galerias urbanas para escoamento da água da chuva;
+- os aquedutos abertos e;
+- de um modo geral, as canalizações onde o líquido não preenche totalmente a seção do canal.
+
+---- 
+
+Para o estudo de condutos livres, vamos trabalhar com três conceitos em todo momento:  
+
+- Área da seção transversal molhada ($A_m$);  
+- Perímetro molhado ($P_m$) e;  
+- Raio hidráulico ($R_h$). 
+
+Na figura a seguir, a área sombreada refere-se à área molhada e os traços mais reforçados referem-se ao perímetro molhado.
+
+```{r fig.align='center'}
+knitr::include_graphics('img/fig01-g.jpg')
+```
+
+**Raio hidráulico ($R_h$)** é a relação entre a _área molhada_ e o _perímetro molhado_.
+
+
+## 9.1 Vazão ou descarga
+
+Para o cálculo da vazão que um canal transporta utiliza-se a equação da continuidade, equação (13)(página 16).
+
+$$Q=A.\vec{v}$$ 
+
+Aqui, trabalharemos com 5 formas de canais que estão apresentadas na figura a seguir (retangular, triangular, trapezoidal, circular e parabolóide). 
+
+```{r fig.align='center'}
+knitr::include_graphics('img/fig02.png')
+```
+
+Assim, basta calcular a área da forma desejada e realizar o produto dessa área pela velocidade de escoamento do canal.
+
+
+## 9.1.1 Velocidade de escoamento ($\vec{v}$):  
+
+Observando-se a figura a seguir nota-se que a velocidade de escoamento em um conduto livre não é constante em toda secão, o que torna seu cálculo um pouco mais complexo. 
+
+```{r fig.align='center'}
+knitr::include_graphics('img/fig03.jpg')
+```
+
+Assim, para o cálculo da vazão, considera-se que a velocidade possui um valor médio, uma vez que a velocidade de escoamento da água em um conduto livre não e\´ constante ao longo do perfil de profundidade do canal.
+
+## 9.1.1 Velocidade de escoamento ($\vec{v}$): {.smaller} 
+
+Assim, Manning propôs o cálculo da velocidade média de escoamento em condutos livres, por
+meio da equação abaixo:  
+
+$$\vec{v}=\frac{1}{n}.R_h^{2/3}.\sqrt{I}$$ 
+
+Em que:    
+
+$\vec{v}$ : velocidade de escoamento da água no conduto livre, m/s;   
+$R_h$: raio hidráulico, m;    
+I : Declividade do fundo do canal, m/m;   
+n : coeficiente de rugosidade de Manning, $\frac{s}{m^{1/3}}$. (Tabela 9)   
+
+**Note que para o cálculo da velocidade de escoamento, é necessário a determinação do _Raio hidráulico_ e, consequentemente, da área de _seção molhada_ e o _perímetro molhado_.**
+
+----  
+
+Tabela 9: Valores do coeficiente n de Manning 
+
+```{r fig.align='center'}
+knitr::include_graphics('img/tab09.png')
+```
+
+
+## 9.2 As relações das formas de condutos livres
+
+**9.2.1 Canal retangular**
+
+a) Perímetro molhado:
+
+$$P=B+2h$$
+
+
+b) área da seção molhada
+
+$$A_m = B.h$$
+
+c) Raio hidráulico: O Raio hidráulico sempre sera´ determinado pela relação entre a área molhada e o perímetro molhado. 
+
+$$R_h = \frac{A_m}{P_m}$$
+
+$$R_h = \frac{B.h}{B+2h}$$
+
+
+## Quadro 6. 
+
+Relação das equações para o estudo de condutos livres para as formas triangular, trapezoidal, circular e parabolóide.
+
+```{r fig.align='center'}
+knitr::include_graphics('img/fig08.png')
+```
+
+Sendo:  
+
+m: cotangente do talude (inclinação).  
+h: altura da secção, m;  
+y: carga hidráulica, m;  
+D: diâmetro, m;   
+$\Theta$: em radianos.
+
+## Quadro 6. 
+
+Relação das equações para o estudo de condutos livres para as formas triangular, trapezoidal, circular e parabolóide.
+
+```{r fig.align='center'}
+knitr::include_graphics('img/fig07.png')
+```
+
+|  Secções    | Largura  (B) | área molhada   | perímetro  molhado   | Raio  hidráulico |
+|-----------:|:------------:|:--------------:|:--------------------|:-----------------:|
+|Parabolóide | $\frac{3}{2}.\frac{A_m}{y}$  | $\frac{2}{3}.B.y$ | Se $\frac{4y}{B}>1$ | $\frac{A_m}{P_m}$ |
+|            |              |                | $\frac{B}{2}.[\sqrt{1+16.(\frac{y}{B})^{2}}+\frac{B}{4.y}.ln(\frac{4.y}{B}+\sqrt{1+16.(\frac{y}{B})^{2}})]$ | |
+|            |              |                |                  |     |
+|            |              |                |                  Se $0<\frac{4y}{B}<=1$        |     |
+|            |              |                |                  $B+\frac{8}{3}.\frac{y^2}{B}$ |     |
+
+
+Sendo:  
+
+m: cotangente do talude (inclinação).  
+h: altura da secção, m;  
+y: carga hidráulica, m;  
+D: diâmetro, m;   
+$\Theta$: em radianos.
+
+
+
+## Exercicio 1:
+
+1. Calcular a vazão a ser transportada por um canal construído de concreto (n=0,013) com declividade de 0,3%. As dimensões e forma do canal estão na figura a seguir:
+
+```{r fig.align='center'}
+knitr::include_graphics('img/fig04.png')
+```
+
+
+## Solução do Exercício 1:
+
+- Calcular a velocidade de escoamento $\vec{v}$: 
+
+$\vec{v}=\frac{1}{n}.R_h^{2/3}.\sqrt{I}$
+
+
+## Solução do Exercício 1:
+
+- Calcular a velocidade de escoamento $\vec{v}$: 
+
+$\vec{v}=\frac{1}{n}.R_h^{2/3}.\sqrt{I}$
+
+$\vec{v}=\frac{1}{n}.(\frac{B.h}{B+2.h})^{2/3}.\sqrt{I}$ 
+
+## Solução do Exercício 1:
+
+- Calcular a velocidade de escoamento $\vec{v}$: 
+
+$\vec{v}=\frac{1}{n}.R_h^{2/3}.\sqrt{I}$
+
+$\vec{v}=\frac{1}{n}.(\frac{B.h}{B+2.h})^{2/3}.\sqrt{I}$ 
+
+$\vec{v}=\frac{1}{0,013}.(\frac{3,5 . 2,0}{3,5+2.2,0})^{2/3}.\sqrt{0,003 m/m}$  
+
+## Solução do Exercício 1:
+
+- Calcular a velocidade de escoamento $\vec{v}$: 
+
+$\vec{v}=\frac{1}{n}.R_h^{2/3}.\sqrt{I}$
+
+$\vec{v}=\frac{1}{n}.(\frac{B.h}{B+2.h})^{2/3}.\sqrt{I}$ 
+
+$\vec{v}=\frac{1}{0,013}.(\frac{3,5 . 2,0}{3,5+2.2,0})^{2/3}.\sqrt{0,003 m/m}$  
+
+$\vec{v}=4,2 m/s$ 
+
+## Solução do Exercício 1:
+
+- Calcular a vazão: 
+
+$Q=A_m.\vec{v}$
+
+## Solução do Exercício 1:
+
+- Calcular a vazão: 
+
+$Q=A_m.\vec{v}$
+
+$Q=(3,5m.2,0m) . 4,02 m/s$
+
+## Solução do Exercício 1:
+
+- Calcular a vazão: 
+
+$Q=A_m.\vec{v}$
+
+$Q=(3,5m.2,0m) . 4,02 m/s$
+
+$Q=\frac{28,14m^3}{s} . \frac{1000L}{m^3} = 28140L/s$ 
+
+## Exercício 2:
+
+Em um projeto de irrigação é necessário conduzir 1500 L/s de água em um canal trapezoidal. Encontrar a altura "y" da carga hidráulica ocorrente nesse canal considerando a base de 60 cm, com talude de 1:0,5. 
+O fundo do canal será de solo compactado e com declividade de 1%.
+
+```{r fig.align='center'}
+knitr::include_graphics('img/fig05.png')
+```
+
+## Solução do Exercício 2:
+
+- Desenvolver a fórmula da vazão: 
+
+$Q=A_m.\vec{v}$
+
+## Solução do Exercício 2:
+
+- Desenvolver a fórmula da vazão: 
+
+$Q=A_m.\vec{v}$
+
+- Substituir a velocidade pela equação de Manning:
+
+$Q=A_m.(\frac{1}{n}.R_h^{2/3}.\sqrt{I})$
+
+## Solução do Exercício 2:
+
+- Desenvolver a fórmula da vazão: 
+
+$Q=A_m.\vec{v}$
+
+- Substituir a velocidade pela equação de Manning:
+
+$Q=A_m.(\frac{1}{n}.R_h^{2/3}.\sqrt{I})$
+
+- Substituir o $R_h$ pela equação do trapézio:
+
+$Q=[(b+m.y).y].(\frac{1}{n}.[\frac{(b+m.y).y}{b+2.y.\sqrt{m^2+1}}]^{2/3}.\sqrt{I})$
+
+## Solução do Exercício 2:
+
+- Substituir as variáveis pelos valores conhecidos:
+
+$Q=[(b+m.y).y].(\frac{1}{n}.[\frac{(b+m.y).y}{b+2.y.\sqrt{m^2+1}}]^{2/3}.\sqrt{I})$
+
+## Solução do Exercício 2:
+
+- Substituir as variáveis pelos valores conhecidos:
+
+$Q=[(b+m.y).y].(\frac{1}{n}.[\frac{(b+m.y).y}{b+2.y.\sqrt{m^2+1}}]^{2/3}.\sqrt{I})$
+
+$1,5 \frac{m^3}{s}=[(0,60+0,5.y).y].(\frac{1}{0,030}.[\frac{(0,60+0,5.y).y}{0,60+2.y.\sqrt{0,5^2+1}}]^{2/3}.\sqrt{0,01})$
+
+## Solução do Exercício 2:
+
+- Substituir as variáveis pelos valores conhecidos:
+
+$Q=[(b+m.y).y].(\frac{1}{n}.[\frac{(b+m.y).y}{b+2.y.\sqrt{m^2+1}}]^{2/3}.\sqrt{I})$
+
+$1,5 \frac{m^3}{s}=[(0,60+0,5.y).y].(\frac{1}{0,030}.[\frac{(0,60+0,5.y).y}{0,60+2.y.\sqrt{0,5^2+1}}]^{2/3}.\sqrt{0,01})$
+
+$1,5 \frac{m^3}{s}=[(0,60.y+0,5.y^2)].(3,3333.[\frac{(0,60.y+0,5.y^2)}{0,60+2.y.\sqrt{0,5^2+1}}]^{2/3})$
+
+## Solução do Exercício 2:
+
+- Substituir as variáveis pelos valores conhecidos:
+
+$Q=[(b+m.y).y].(\frac{1}{n}.[\frac{(b+m.y).y}{b+2.y.\sqrt{m^2+1}}]^{2/3}.\sqrt{I})$
+
+$1,5 \frac{m^3}{s}=[(0,60+0,5.y).y].(\frac{1}{0,030}.[\frac{(0,60+0,5.y).y}{0,60+2.y.\sqrt{0,5^2+1}}]^{2/3}.\sqrt{0,01})$
+
+$1,5 \frac{m^3}{s}=[(0,60.y+0,5.y^2)].(3,3333.[\frac{(0,60.y+0,5.y^2)}{0,60+2.y.\sqrt{0,5^2+1}}]^{2/3})$
+
+$1,5 \frac{m^3}{s}=(0,60.y+0,5.y^2).3,3333.[\frac{(0,60.y+0,5.y^2)}{0,60+2.y.\sqrt{0,5^2+1}}]^{2/3}$
+
+## Solução do Exercício 2:
+
+- Substituir as variáveis pelos valores conhecidos:
+
+$Q=[(b+m.y).y].(\frac{1}{n}.[\frac{(b+m.y).y}{b+2.y.\sqrt{m^2+1}}]^{2/3}.\sqrt{I})$
+
+$1,5 \frac{m^3}{s}=[(0,60+0,5.y).y].(\frac{1}{0,030}.[\frac{(0,60+0,5.y).y}{0,60+2.y.\sqrt{0,5^2+1}}]^{2/3}.\sqrt{0,01})$
+
+$1,5 \frac{m^3}{s}=[(0,60.y+0,5.y^2)].(3,3333.[\frac{(0,60.y+0,5.y^2)}{0,60+2.y.\sqrt{0,5^2+1}}]^{2/3})$
+
+$1,5 \frac{m^3}{s}=(0,60.y+0,5.y^2).3,3333.[\frac{(0,60.y+0,5.y^2)}{0,60+2.y.\sqrt{0,5^2+1}}]^{2/3}$
+
+$1,5 = (2.y+1,6667.y^2).[\frac{(0,60.y+0,5.y^2)}{(0,60+2,2361.y)}]^{2/3}$
+
+## Solução do Exercício 2:
+
+- Substituir as variáveis pelos valores conhecidos:
+
+$Q=[(b+m.y).y].(\frac{1}{n}.[\frac{(b+m.y).y}{b+2.y.\sqrt{m^2+1}}]^{2/3}.\sqrt{I})$
+
+$1,5 \frac{m^3}{s}=[(0,60+0,5.y).y].(\frac{1}{0,030}.[\frac{(0,60+0,5.y).y}{0,60+2.y.\sqrt{0,5^2+1}}]^{2/3}.\sqrt{0,01})$
+
+$1,5 \frac{m^3}{s}=[(0,60.y+0,5.y^2)].(3,3333.[\frac{(0,60.y+0,5.y^2)}{0,60+2.y.\sqrt{0,5^2+1}}]^{2/3})$
+
+$1,5 \frac{m^3}{s}=(0,60.y+0,5.y^2).3,3333.[\frac{(0,60.y+0,5.y^2)}{0,60+2.y.\sqrt{0,5^2+1}}]^{2/3}$
+
+$1,5 = (2.y+1,6667.y^2).[\frac{(0,60.y+0,5.y^2)}{(0,60+2,2361.y)}]^{2/3}$
+
+Continuar a solução utilizando o método ITERATIVO. 
+
+- Dividir a equação em dois membros, o lado esquerdo (LE) e o lado direito (LD);
+- O módulo deve ser $|LE-LD| <= 0,01$.
+- Acompanhar usando o Excel. [9-Condutos-Livres-exercicios.xls](9-Condutos-Livres-exercicios.xls)
+
+## Solução do Exercício 2:
+
+- O produto entre a área de escavação e o comprimento do canal permite calcular o volume de solo ($m^3$) a ser retirado para a construção do canal.
+
+```{r fig.align='center'}
+knitr::include_graphics('img/fig05.png')
+```
+
+## Solução do Exercício 2:
+
+- O produto entre a área de escavação e o comprimento do canal permite calcular o volume de solo ($m^3$) a ser retirado para a construção do canal.
+
+```{r fig.align='center'}
+knitr::include_graphics('img/fig05.png')
+```
+
+$A=\frac{(B+b).h}{2}$
+
+$A=1,1m^2$
+
+Com a capacidade operacional da máquina (CO em $h/m^3$) e o custo hora-máquina (R$/h), pode-se estimar o custo da escavação do canal.
+
+## Exercício 3:
+
+Um canal de solo compactado (n=0,030) com secção retangular será utilizado para conduzir uma vazão de 75 L/s para atender um projeto de irrigação por superfície em um arrozal. Fixando-se a carga hidráulica (y) em 50 cm e aceitando-se uma precisão de 1% (|LE-LD| <= 0,01), determine a largura da base (B) que o canal deverá ter para uma declividade de 1%. 
+Sugestão: O valor de B está contido entre os valores de 15 e 30 cm.
+
+## Exercício 4:
+
+Em um projeto de irrigação é necessário conduzir 120 L/s de água em um canal triangular. Encontrar a altura _h_ da carga hidráulica ocorrente nesse canal considerando o talude de 1:0,5. O fundo do canal será de solo compactado (n=0,030) e com declividade de 0,4%. 
+
+```{r fig.align='center'}
+knitr::include_graphics('img/fig06.png')
+```
+
+## Exercício 5:
+
+Para conduzir uma vazão de 1000 L/s foi construído um canal paraboloide de concreto (n=0,013) e declividade de 0,6%. Sabendo-se que o valor de B no canal atinge 100 cm, determine o valor da altura de água _y_.
+
+```{r fig.align='center'}
+knitr::include_graphics('img/fig07.png')
+```
+
+----  
+
+<center><h1>Obrigado!!!</h1></center>
+
+```{r fig.align='center', fig.width=500}
+knitr::include_graphics('img/canal.jpg')
+```
+
+**Bibliografia:**
+
+- Apostila da disciplina.
+
+**Ferramenta de edição:**  
+
+- RStudio IDE. Version 1.0.153 – © 2009-2017 RStudio, Inc. 
+- R-Markdown. Apresentação no formato "Slidy Html". 
